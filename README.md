@@ -1,4 +1,4 @@
-## Peddy-Pets
+###  Peddy-Pets
 # Description
 This project is made with pets where each pet's picture name, birthday, gender, and price are shown in detail.
 
