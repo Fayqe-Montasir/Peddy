@@ -43,10 +43,15 @@
       transform: rotate(360deg);
     }
   }
+
+  .active {
+    background-color: rgb(156, 221, 228);
+    border-radius: 54px;
+  }
 </style>
 
-<body class="w-10/12 mx-auto">
-  <header>
+<body>
+  <header class="w-10/12 mx-auto">
     <nav>
       <div class="navbar bg-base-100">
         <div class="navbar-start space-x-3">
@@ -73,13 +78,13 @@
         <h1 class=" w-8/12 text-7xl font-black">Your Path to Adoption Starts Here</h1>
         <p class="w-3/6">It is a long established fact that a reader will be distracted by the readable content of a
           page when looking at its layout. The point of using Lorem Ipsum is that it has a.</p>
-        <button class="btn text-xl font-bold text-white bg-clifford  mb-10 ">View More</button>
+        <button class="btn text-xl font-bold text-white bg-clifford  mb-10 "><a href="#main">View More</a></button>
         <img src="images/pet.webp" alt="">
       </div>
     </div>
   </header>
-  <main>
-    <div class="text-center ">
+  <main class="w-10/12 mx-auto">
+    <div id="main" class="text-center ">
       <h1 class="text-4xl font-black my-2">Adopt Your Best Friend</h1>
       <p class="mb-12">It is a long established fact that a reader will be distracted by the readable content of a <br>
         page when looking at its layout. The point of using Lorem Ipsum is that it has a.</p>
@@ -87,20 +92,24 @@
       <div id="btn-container" class="lg:flex justify-center items-center space-x-6 "></div>
       <div class="flex justify-between my-6">
         <h3 class="text-2xl font-black">Best Deal For you</h3>
-        <button class="btn text-xl bg-clifford text-white  font-bold">Sort by Price</button>
+        <button id="demo" onclick="loadSort()" class="btn text-xl bg-clifford text-white  font-bold">Sort by Price</button>
       </div>
     </div>
-    <div id="spinner"></div>
+    <div  id="spinner"></div>
     <!-- card -->
-    <section class="lg:flex justify-between">
+    <section class="lg:flex justify-between ">
 
       <div id="pets" class=" w-full lg:grid grid-cols-3 gap-5 ">
       </div>
       <div class="lg:w-1/4 border rounded-xl p-5 ml-4">
+        <div id="like-pets" class="grid grid-cols-2 gap-4 ">
+
+        </div>
+
       </div>
     </section>
 
-    <button class="btn hidden" onclick="my_modal_1.showModal()">open modal</button>
+    <!-- modal1 -->
     <dialog id="my_modal_1" class="modal">
       <div class="modal-box">
         <div id="detail-container"></div>
@@ -112,14 +121,68 @@
       </div>
     </dialog>
 
+    <!-- modal2 -->
+    <dialog id="my_modal_2" class="modal">
+      <div class="modal-box text-center">
+        <div id="btn-congrates" class="text-center">
+        </div>
+        <form method="dialog">
+          <span class="countdown font-mono text-6xl">
+            <span style="--value:1,2,3;"></span>
+          </span>
+        </form>
+      </div>
+    </dialog>
+
+
+  </main>
+  <footer class="bg-black text-white mt-10">
+    <div class="w-10/12 mx-auto lg:flex justify-between py-24 ">
+      <div class="">
+        <div class="flex space-x-3 mb-3">
+          <img src="images/logo.webp" alt="">
+          <a class=" text-4xl font-bold">Peddy</a>
+        </div>
+        <p>Location: av. Washington 165,
+          <br> NY CA 54003</p>
+        <p>Phone: +31 85 964 47 25</p>
+        <p>Email: info@yourdomain.com</p>
+        <p>Openings hours: 9.00 AM - 5.00 PM</p>
+        <div class="space-x-5 mt-3">
+          <i class="fa-brands fa-facebook-f"></i>
+          <i class="fa-brands fa-x-twitter"></i>
+          <i class="fa-brands fa-youtube"></i>
+          <i class="fa-brands fa-instagram"></i>
+        </div>
+      </div>
+      <div class="">
+        <h5 class="font-bold mb-8">Useful Links</h5>
+        <p>Home</p>
+        <p>About Us</p>
+        <p>Animals</p>
+        <p>Foundation</p>
+        <p>Contact</p>
+      </div>
+    
+    <div class="text5">
+      <h5 class="font-bold mb-8">Drop a Message</h5>
+      <input class="p-4 bg-gray-500 rounded-xl w-[240px] mb-4" type="text" placeholder="Enter your email">
+        <br>
+          <button class="btn rounded-xl text-white font-bold bg-clifford w-[240px]">Subscribe</button>
+
+     
 
     
-  </main>
-  <footer>
-    <div class="h-32 w-11 "></div>
+    </div>
+  </div>
   </footer>
   <script src="js/index.js"></script>
 </body>
 
 </html>
+
+<!-- document.getElementById("spinner").style.display ="block"
+    setTimeout(function () {
+        petButtonCategories(false)
+},2000) -->
 
