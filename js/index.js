@@ -15,7 +15,7 @@ const loadAllPets = async () => {
 const displayAllPets = (pets) => {
     document.getElementById('spinner').style.display ="none"
     const petCard = document.getElementById('pets')
-    petCard.innerHTML = "";
+    petCard.innerHTML = '';
     if (pets.length == 0) {
         petCard.classList.remove("lg:grid")
         petCard.innerHTML = `
@@ -60,57 +60,69 @@ const displayAllPets = (pets) => {
         petCard.appendChild(div);
     })
 }
+
 const loadPets = async (name) => {
-    const res = await fetch(`https://openapi.programming-hero.com/api/peddy/category/${name}`)
+    const petCard = document.getElementById('pets');
+    petCard.innerHTML = ''; 
+    document.getElementById("spinner").style.display = "block"; 
+    const res = await fetch(`https://openapi.programming-hero.com/api/peddy/category/${name}`);
     const data = await res.json();
-    buttonActive()
-    const activeBtn =document.getElementById(`btn-${name}`);
-    activeBtn.classList.add("active") 
-    document.getElementById("spinner").style.display ="block"
+    buttonActive();
+    const activeBtn = document.getElementById(`btn-${name}`);
+    activeBtn.classList.add("active");
     setTimeout(function () {
         displayAllPets(data.data);
     }, 2000);
 }
-const buttonActive = () =>{
-    const button =document.getElementsByClassName('category-btn')
-  for(let btn of button){
-    btn.classList.remove("active")
-  }
+
+const buttonActive = () => {
+    const buttons = document.getElementsByClassName('category-btn');
+    for (let btn of buttons) {
+        btn.classList.remove("active");
+    }
 }
 const loadSort = async () => {
     const res = await fetch('https://openapi.programming-hero.com/api/peddy/pets')
     const data = await res.json();
-    displaySort(data.pets)
-
+        displaySort(data.pets);
 }
 const displaySort = (prices) =>{
+    const petContainer = document.getElementById("pets");
+    petContainer.innerHTML = '';
+
+    document.getElementById("spinner").style.display = "block";
         console.log(prices)
         prices.sort((a, b)=> b.price - a.price)
+        setTimeout(() => {
         displayAllPets(prices)
-        buttonActive(false)
-       
+    }, 2000);  
+        buttonActive(false)   
 }
 
-// baki
 const displayCongrates = () => {
-    const btnCongrates =document.getElementById('btn-congrates')
-    btnCongrates.innerHTML=`
+    const btnCongrates = document.getElementById('btn-congrates')
+    btnCongrates.innerHTML = `
         <i class="fa-regular fa-handshake text-5xl"></i>
-        <h3 class="text-4xl font-bold">congrates</h3>
-        <p class="py-4 font-bold">Adoption Process is Start For Pet</p>
+        <h3 class="text-4xl font-bold">Congrats</h3>
+        <p class="py-4 font-bold">Adoption Process is Starting For Pet</p>
     `
     document.getElementById('my_modal_2').showModal()
     let num = 3;
     const countdownElement = document.getElementById('countdown');
-    const Timer = setInterval(() => {
+    countdownElement.textContent = num; 
+    const btnCountdown = document.getElementById('btn-Countdown'); 
+    btnCountdown.classList.add('hidden'); 
+
+    const timer = setInterval(() => {
         num--;
         countdownElement.textContent = num;
-        if(num <= 0){
-            clearInterval(Timer)
+        if (num <= 0) {
+            clearInterval(timer);    
         }
     }, 1000);
+
     setTimeout(function () {
-        document.getElementById('btn-Countdown').click()
+        btnCountdown.click(); 
     }, 3000);
 }
 const loadDetails = async (Details) => {
