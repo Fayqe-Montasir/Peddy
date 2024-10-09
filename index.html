@@ -5,6 +5,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
   <script src="https://kit.fontawesome.com/e3d8185b7f.js" crossorigin="anonymous"></script>
   <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css" rel="stylesheet" type="text/css" />
   <script src="https://cdn.tailwindcss.com"></script>
@@ -14,6 +19,10 @@
         extend: {
           colors: {
             clifford: '#0E7A81',
+          },
+          fontFamily: {
+            lato:'Lato',
+            Inter:'Inter',
           }
         }
       }
@@ -51,8 +60,8 @@
 </style>
 
 <body>
-  <header class="w-10/12 mx-auto">
-    <nav>
+  <header class="w-10/12 mx-auto font-lato">
+    <nav class="mt-12">
       <div class="navbar bg-base-100">
         <div class="navbar-start space-x-3">
           <img src="images/logo.webp" alt="">
@@ -84,7 +93,7 @@
     </div>
   </header>
   <main class="w-10/12 mx-auto">
-    <div id="main" class="text-center ">
+    <div id="main" class="text-center font-lato">
       <h1 class="text-4xl font-black my-2">Adopt Your Best Friend</h1>
       <p class="mb-12">It is a long established fact that a reader will be distracted by the readable content of a <br>
         page when looking at its layout. The point of using Lorem Ipsum is that it has a.</p>
@@ -97,7 +106,7 @@
     </div>
     <div  id="spinner"></div>
     <!-- card -->
-    <section class="lg:flex justify-between ">
+    <section class="lg:flex justify-between font-Inter ">
 
       <div id="pets" class=" w-full lg:grid grid-cols-3 gap-5 ">
       </div>
@@ -127,16 +136,15 @@
         <div id="btn-congrates" class="text-center">
         </div>
         <form method="dialog">
-          <span class="countdown font-mono text-6xl">
-            <span style="--value:1,2,3;"></span>
-          </span>
+          <h1 id="countdown" class="text-5xl font-extrabold">3</h1>
+          <button id="btn-Countdown" class=" btn hidden bg-sky-200">Close</button>
         </form>
       </div>
     </dialog>
 
 
   </main>
-  <footer class="bg-black text-white mt-10">
+  <footer class="bg-black text-white mt-10 font-Inter">
     <div class="w-10/12 mx-auto lg:flex justify-between py-24 ">
       <div class="">
         <div class="flex space-x-3 mb-3">
@@ -181,8 +189,5 @@
 
 </html>
 
-<!-- document.getElementById("spinner").style.display ="block"
-    setTimeout(function () {
-        petButtonCategories(false)
-},2000) -->
+
 

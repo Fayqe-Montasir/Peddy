@@ -13,11 +13,10 @@ const loadAllPets = async () => {
 }
 
 const displayAllPets = (pets) => {
+    document.getElementById('spinner').style.display ="none"
     const petCard = document.getElementById('pets')
     petCard.innerHTML = "";
-
     if (pets.length == 0) {
-         document.getElementById('spinner').style.display ="none"
         petCard.classList.remove("lg:grid")
         petCard.innerHTML = `
         <div class="w-full bg-gray-200 rounded-xl py-28">
@@ -33,14 +32,10 @@ const displayAllPets = (pets) => {
     else {
         petCard.classList.add("lg:grid")
     }
-
     pets.forEach(pet => {
-        
-        document.getElementById('spinner').style.display ="none"
-        const { image, pet_name, breed, date_of_birth, gender, price, petId } = pet;
+          const { image, pet_name, breed, date_of_birth, gender, price, petId } = pet;
         const div = document.createElement('div');
         div.classList = "card bg-base-100 border  rounded-xl p-4  "
-
         div.innerHTML = `
       <figure  >
      <img
@@ -62,11 +57,10 @@ const displayAllPets = (pets) => {
      </div>
      </div>
      `
-            petCard.appendChild(div);
+        petCard.appendChild(div);
     })
 }
 const loadPets = async (name) => {
-
     const res = await fetch(`https://openapi.programming-hero.com/api/peddy/category/${name}`)
     const data = await res.json();
     buttonActive()
@@ -76,8 +70,6 @@ const loadPets = async (name) => {
     setTimeout(function () {
         displayAllPets(data.data);
     }, 2000);
-
-
 }
 const buttonActive = () =>{
     const button =document.getElementsByClassName('category-btn')
@@ -89,19 +81,18 @@ const loadSort = async () => {
     const res = await fetch('https://openapi.programming-hero.com/api/peddy/pets')
     const data = await res.json();
     displaySort(data.pets)
+
 }
 const displaySort = (prices) =>{
-//     prices.forEach( taka =>{
-//         const numbers = taka;
-//         const sorted = numbers.sort((a, b) => a - b);
-//         console.log(sorted)
-
-//     })
+        console.log(prices)
+        prices.sort((a, b)=> b.price - a.price)
+        displayAllPets(prices)
+        buttonActive(false)
+       
 }
 
 // baki
 const displayCongrates = () => {
-   
     const btnCongrates =document.getElementById('btn-congrates')
     btnCongrates.innerHTML=`
         <i class="fa-regular fa-handshake text-5xl"></i>
@@ -109,7 +100,18 @@ const displayCongrates = () => {
         <p class="py-4 font-bold">Adoption Process is Start For Pet</p>
     `
     document.getElementById('my_modal_2').showModal()
-
+    let num = 3;
+    const countdownElement = document.getElementById('countdown');
+    const Timer = setInterval(() => {
+        num--;
+        countdownElement.textContent = num;
+        if(num <= 0){
+            clearInterval(Timer)
+        }
+    }, 1000);
+    setTimeout(function () {
+        document.getElementById('btn-Countdown').click()
+    }, 3000);
 }
 const loadDetails = async (Details) => {
     const res = await fetch(`https://openapi.programming-hero.com/api/peddy/pet/${Details}`)
@@ -173,6 +175,3 @@ const petButtonCategories = (buttons) => {
 
 loadButton();
 loadAllPets()
-
-
-// for(let pics of image) {
