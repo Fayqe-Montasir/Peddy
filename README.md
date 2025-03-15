@@ -17,5 +17,5 @@ This project is made with pets where each pet's picture name, birthday, gender, 
 - Object Property Shorthand
 
 # project Live link
-- Link:
+- Link:  https://b10assignment-06.netlify.app/#main
 
